@@ -9,13 +9,13 @@ int calculate_usint_max();
 int calculate_sint_min();
 int calculate_sint_max();
 
-int calculate_uint_max();
+unsigned int unsigned_int_max();
 int calculate_int_min();
 int calculate_int_max();
 
-int calculate_ulint_max();
-int calculate_long_min();
-int calculate_long_max();
+long calculate_ulint_max();
+long calculate_long_min();
+long max_size_long();
 
 int calculate_llong_min();
 int calculate_llong_max();
@@ -23,7 +23,8 @@ int calculate_ullong();
 
 void main()
 {
-    int char_d,schar_min_d,schar_max_d,uchar_max_d,sint_min_d,sint_max_d,short_min_d,shirt_max_d,uint_max_d,i;
+    int char_d,schar_min_d,schar_max_d,uchar_max_d,sint_min_d,sint_max_d,short_min_d,shirt_max_d,uint_max_d;
+    unsigned int unsigned_int;
     long long_min_d,long_max_d,ulong_max_d;
     long long llong_min_d,llong_max_d,ullong_max_d;
 
@@ -55,13 +56,13 @@ void main()
     printf("USHRT_MAX=%d\n",USHRT_MAX);
     printf("INT_MIN=%d\n",INT_MIN);
     printf("INT_MAX=%d\n",INT_MAX);
-    printf("UINT_MAX=%g\n",UINT_MAX);
-    printf("LONG_MAX=%d\n",LONG_MAX);
-    printf("LONG_MIN=%d\n",LONG_MIN);
-    printf("ULONG_MAX=%d\n",ULONG_MAX);
-    printf("LLONG_MAX=%d\n",LLONG_MAX);
-    printf("LLONG_MIN=%d\n",LLONG_MIN);
-    printf("ULLONG_MAX=%d\n",ULLONG_MAX);
+    printf("UINT_MAX=%ld\n",UINT_MAX);
+    printf("LONG_MAX=%ld\n",LONG_MAX);
+    printf("LONG_MIN=%ld\n",LONG_MIN);
+    printf("ULONG_MAX=%lu\n",ULONG_MAX);
+    printf("LLONG_MAX=%lld\n",LLONG_MAX);
+    printf("LLONG_MIN=%lld\n",LLONG_MIN);
+    printf("ULLONG_MAX=%lld\n",ULLONG_MAX);
 
     printf("\nAnd now it will be calculated.\n");
 
@@ -86,24 +87,20 @@ void main()
 
 //---------------------------------------------short-integer
 
-//    printf("\nNext we will know size of unsigned short int.\n");    
     i=calculate_usint_max();
     printf("Maximal value of unsigned short int equal %d\n",i);
 
-//    printf("\nNext we will know size of signed short int.\n");    
     i=calculate_sint_min();
     printf("Minimal value of signed short int equal %d\n",i);
 
-//    printf("\nNext we will know size of signed short int.\n");    
     i=calculate_sint_max();
     printf("Maximal value of signed short int equal %d\n",i);
 
 
 //---------------------------------------------integer 
 
-//    printf("\nNext we will know size of unsigned int.\n");    
-    i=calculate_uint_max();
-    printf("Maximal value of unsigned int equal %d\n",i);
+    unsigned_int=unsigned_int_max();
+    printf("Maximal value of unsigned int equal %ld\n",unsigned_int);
 
     i=calculate_int_max();
     printf("Maximal value of signed int equal %d\n",i);
@@ -111,8 +108,8 @@ void main()
 
 //---------------------------------------------long-integer
 
-/*    printf("\nNext we will know size of unsigned long int.\n");    
-    i=calculate_ulint_max();
+//    printf("\nNext we will know size of unsigned long int.\n");    
+    i=max_size_long();
     printf("Maximal value of unsigned long int equal %d\n",i);
 
 /*    printf("\nNext we will know size of signed long int.\n");    
@@ -223,7 +220,7 @@ int calculate_sint_max()
 }
 
 //---------
-int calculate_uint_max()
+unsigned int unsigned_int_max()
 {
     unsigned int d,d_p,step;
     int j,i;
@@ -285,7 +282,7 @@ int calculate_int_max()
 
 //---------
 
-int calculate_ulint_max()
+long calculate_ulint_max()
 {
     unsigned long int i=0;
 
@@ -313,15 +310,44 @@ int calculate_lint_min()
 
 }
 
-int calculate_lint_max()
+
+long max_size_long()
 {
-    signed long int i=0;
+    int i,j;
+    long  step,d,d_p;
 
-    while(i>=0){
+    i=j=0;
+    step=d=d_p=0; 
+
+    d=1;
+    while(d>0){
 	++i;
+	d_p=d;
+	d=d*10;
+//	printf("at step %2i d=%20ld;d_p=%20ld;cycle 1\n",i,d,d_p);
     }
-    --i;
-    
-    return i;
+//after getting negative value of digit d replacing him with backup
+    d=d_p;
+//    printf("backup) d=%20ld;\n",d);
+//and now we get max size of long
+    step=d;
+    while(step>1){
+	step=step/10;
+	i=0;
+	while(d>0){
+	    d_p=d;
+	    d=d+step;
+	    ++i;
+	    if(i==100)
+		getchar();
+//	    printf("at step %20ld d=%20ld;\n",i,d);
+	}
+    	d=d_p;
+//	printf("backup2)) step=%20ld;d=%20ld;\n",step,d);
 
+
+    }
+//    printf("in result d=%20ld;\n",d);
+    return d;
 }
+
