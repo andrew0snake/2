@@ -23,7 +23,7 @@ int calculate_ullong();
 
 void main()
 {
-    int char_d,schar_min_d,schar_max_d,uchar_max_d,sint_min_d,sint_max_d,short_min_d,shirt_max_d,uint_max_d;
+    int char_d,schar_min_d,schar_max_d,uchar_max_d,sint_min_d,sint_max_d,short_min_d,shirt_max_d,uint_max_d,i;
     unsigned int unsigned_int;
     long long_min_d,long_max_d,ulong_max_d;
     long long llong_min_d,llong_max_d,ullong_max_d;
@@ -222,28 +222,38 @@ int calculate_sint_max()
 //---------
 unsigned int unsigned_int_max()
 {
-    unsigned int d,d_p,step;
-    int j,i;
-    i=j=step=d=d_p=0;
-    d=1;
-    while(d>0){
+    unsigned int d,d_p,step,max;
+    int j,i,prov;
+    i = j = step = d = d_p = prov = 0;
+    d = 1;
+    while ( d>d_p ){
         ++i;
-        d_p=d;
-        d=d*10;
+        d_p = d;
+        d = d*10;
+	printf ( "d=%ld;d_p=%ld;\n",d,d_p );
     }
+    getchar();
 //after getting negative value of digit d replacing him with backup
-    d=d_p;
+    d = d_p;
 //and now we get max size of int    
-    step=d;
-    while(step>1){
-        step=step/10;
-        i=0;
-        while(d>0){
-            d_p=d;
-            d=d+step;
+    step = d;
+    while ( step>1 ){
+        step = step/10;
+        i = 0;
+        max = 0;
+        prov = 0;
+        while ( prov == 0 ){
+            d = d+step;
+            if ( d>max )
+                max = d;
+            else
+                prov = 1;
             ++i;
+            printf ( "d=%14ld;prov=%1d;i=%2d;max=%12ld\n",d,prov,i,max );
         }
-        d=d_p;
+        d = max;
+        printf ( "max=%12ld;step=%12ld;d=%12ld;\n",max,step );
+        getchar();
     }
     return d;
 }
@@ -253,6 +263,7 @@ int calculate_int_max()
 {
     int i,j,step,d,d_p;
     i=j=step=d=d_p=0;
+
     d=1;
     while(d>0){
         ++i;
@@ -263,6 +274,7 @@ int calculate_int_max()
 //after getting negative value of digit d replacing him with backup
     d=d_p;
 //    printf("backup) d=%d;\n",d);
+
 //and now we get max size of int    
     step=d;
     while(step>1){
