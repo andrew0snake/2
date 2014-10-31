@@ -21,7 +21,7 @@ int calculate_llong_min();
 int calculate_llong_max();
 int calculate_ullong();
 
-void main()
+int main()
 {
     int char_d,schar_min_d,schar_max_d,uchar_max_d,sint_min_d,sint_max_d,short_min_d,shirt_max_d,uint_max_d,i;
     unsigned int unsigned_int;
@@ -56,7 +56,7 @@ void main()
     printf("USHRT_MAX=%d\n",USHRT_MAX);
     printf("INT_MIN=%d\n",INT_MIN);
     printf("INT_MAX=%d\n",INT_MAX);
-    printf("UINT_MAX=%ld\n",UINT_MAX);
+    printf("UINT_MAX=%u\n",UINT_MAX);
     printf("LONG_MAX=%ld\n",LONG_MAX);
     printf("LONG_MIN=%ld\n",LONG_MIN);
     printf("ULONG_MAX=%lu\n",ULONG_MAX);
@@ -100,7 +100,7 @@ void main()
 //---------------------------------------------integer 
 
     unsigned_int=unsigned_int_max();
-    printf("Maximal value of unsigned int equal %ld\n",unsigned_int);
+    printf("Maximal value of unsigned int equal %u\n",unsigned_int);
 
     i=calculate_int_max();
     printf("Maximal value of signed int equal %d\n",i);
@@ -176,49 +176,6 @@ int calculate_uchar_max()
 
 }
 
-
-int calculate_usint_max()
-{
-    unsigned short int i=0;
-
-/*    while(i>0){
-	++i;
-    }
-    --i;
-*/
-    --i;
-    
-    return i;
-
-}
-
-
-int calculate_sint_min()
-{
-    signed short int i=0;
-
-    while(i<=0){
-	--i;
-    }
-    ++i;
-    
-    return i;
-
-}
-
-int calculate_sint_max()
-{
-    signed short int i=0;
-
-    while(i>=0){
-	++i;
-    }
-    --i;
-    
-    return i;
-
-}
-
 //---------
 unsigned int unsigned_int_max()
 {
@@ -230,13 +187,13 @@ unsigned int unsigned_int_max()
         ++i;
         d_p = d;
         d = d*10;
-	printf ( "d=%ld;d_p=%ld;\n",d,d_p );
+	printf ( "d=%u;d_p=%u;\n",d,d_p );
     }
     getchar();
 //after getting negative value of digit d replacing him with backup
     d = d_p;
 //and now we get max size of int    
-    step = d;
+/*    step = d;
     while ( step>1 ){
         step = step/10;
         i = 0;
@@ -255,7 +212,7 @@ unsigned int unsigned_int_max()
         printf ( "max=%12ld;step=%12ld;d=%12ld;\n",max,step );
         getchar();
     }
-    return d;
+*/    return d;
 }
 
 
