@@ -87,7 +87,7 @@ int main()
 
 //---------------------------------------------short-integer
 
-    i=calculate_usint_max();
+/*    i=calculate_usint_max();
     printf("Maximal value of unsigned short int equal %d\n",i);
 
     i=calculate_sint_min();
@@ -95,7 +95,7 @@ int main()
 
     i=calculate_sint_max();
     printf("Maximal value of signed short int equal %d\n",i);
-
+*/
 
 //---------------------------------------------integer 
 
@@ -187,7 +187,7 @@ unsigned int unsigned_int_max()
         ++i;
         d_p = d;
         d = d*10;
-	printf ( "d=%u;d_p=%u;\n",d,d_p );
+	printf ( "d=%10u;d_p=%10u;\n",d,d_p );
     }
     getchar();
 //after getting negative value of digit d replacing him with backup
