@@ -187,16 +187,13 @@ unsigned int unsigned_int_max()
         ++i;
         d_p = d;
         d = d*10;
-//	printf ( "d=%10u;d_p=%10u;\n",d,d_p );
     }
-//    getchar();
 //after getting negative value of digit d replacing him with backup
     d = d_p;
 //and now we get max size of int    
     step = d;
     while ( step>1 ){
         step = step/10;
-//        printf("in the first strings we get step=%12ld;\n",step);
         i = 0;
         max = 0;
         prov = 0;
@@ -210,10 +207,7 @@ unsigned int unsigned_int_max()
                 
             }
             ++i;
-//            printf ( "d=%14u;prov=%1u;i=%3d;d_p=%12u;step=%12u;\n",d,prov,i,d_p,step );
         }
-//        printf ( "step=%8u;d=%8u;\n",step,d );
-//        getchar();
     }
     return d;
 }
