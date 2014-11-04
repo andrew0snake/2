@@ -10,8 +10,8 @@ int calculate_sint_min();
 int calculate_sint_max();
 
 unsigned int unsigned_int_max();
-int calculate_int_min();
-int calculate_int_max();
+int int_min();
+int int_max();
 
 long calculate_ulint_max();
 long calculate_long_min();
@@ -23,7 +23,7 @@ int calculate_ullong();
 
 int main()
 {
-    int char_d,schar_min_d,schar_max_d,uchar_max_d,sint_min_d,sint_max_d,short_min_d,shirt_max_d,uint_max_d,i;
+    int char_d,schar_min_d,schar_max_d,uchar_max_d,int_min_d,int_max_d,short_min_d,shirt_max_d,uint_max_d,i;
     unsigned int unsigned_int;
     long long_min_d,long_max_d,ulong_max_d;
     long long llong_min_d,llong_max_d,ullong_max_d;
@@ -102,9 +102,11 @@ int main()
     unsigned_int=unsigned_int_max();
     printf("Maximal value of unsigned int equal %u\n",unsigned_int);
 
-    i=calculate_int_max();
-    printf("Maximal value of signed int equal %d\n",i);
+    i=int_max();
+    printf ( "Maximal value of signed int equal %d\n",i );
     
+    i = int_min();
+    printf ( "Minimal value of signed int equal %d;\n",i );
 
 //---------------------------------------------long-integer
 
@@ -213,40 +215,61 @@ unsigned int unsigned_int_max()
 }
 
 
-int calculate_int_max()
+int int_max()
 {
     int i,j,step,d,d_p;
-    i=j=step=d=d_p=0;
-
-    d=1;
-    while(d>0){
+    i = j = step = d = d_p = 0;
+    d = 1;
+    while ( d>0 ){
         ++i;
-        d_p=d;
-        d=d*10;
-//        printf("at step %i d=%d;\n",i,d);
+        d_p = d;
+        d = d*10;
     }
 //after getting negative value of digit d replacing him with backup
-    d=d_p;
-//    printf("backup) d=%d;\n",d);
-
+    d = d_p;
 //and now we get max size of int    
-    step=d;
-    while(step>1){
-        step=step/10;
-        i=0;
-        while(d>0){
-            d_p=d;
-            d=d+step;
+    step = d;
+    while ( step>1 ){
+        step = step/10;
+        i = 0;
+        while ( d>0 ){
+            d_p = d;
+            d = d+step;
             ++i;
-//            printf("at step %d d=%d;\n",i,d);
         }
-        d=d_p;
-//        printf("backup2)) step=%d;d=%d;\n",step,d);
+        d = d_p;
     }
     return d;
 }
 
 //---------
+
+int int_min()
+{
+    int d,d_p,min;
+    short int i,j;
+
+    d=0;
+    d_p=0;
+    i=0;
+    j=0;
+
+    d=-1;
+    while ( d<0 ) {
+        d_p=d;
+        d=d*10;
+    }
+    
+    d=d_p;
+    printf ( "d=%10d;d_p=%10d;\n",d,d_p );
+
+    d_p=0;
+    
+
+
+
+}
+
 
 long calculate_ulint_max()
 {
