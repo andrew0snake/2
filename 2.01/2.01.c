@@ -246,28 +246,34 @@ int int_max()
 
 int int_min()
 {
-    int d,d_p,min;
+    int d,d_p,min,step;
     short int i,j;
 
-    d=0;
-    d_p=0;
-    i=0;
-    j=0;
+    d = 0;
+    d_p = 0;
+    i = 0;
+    j = 0;
 
-    d=-1;
+    d = -1;
     while ( d<0 ) {
-        d_p=d;
-        d=d*10;
+        d_p = d;
+        d = d*10;
     }
     
-    d=d_p;
-    printf ( "d=%10d;d_p=%10d;\n",d,d_p );
+    d = d_p;
+//    printf ( "d=%10d;d_p=%10d;\n",d,d_p );
 
-    d_p=0;
-    
-
-
-
+    d_p = 0;
+    step = d;
+    while ( step<(-1) ){
+        step = step/10;
+        while ( d<0 ){ 
+            d_p = d;
+            d = d + step;
+        }
+        d = d_p;
+    }
+    return d;
 }
 
 
