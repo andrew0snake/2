@@ -133,6 +133,10 @@ int main()
     float_max = float_max_size();
     printf ( "Maximal value of float equal %f;\n",float_max );
 
+    float_min = float_min_size();
+    printf ( "Minimal value of float equal %f;\n",float_min );
+
+
 }
 
 
@@ -429,22 +433,22 @@ float float_max_size(){
         d_p = d;
         d = d*10;
         i++;
-        printf ( "d=%46f;i=%d\n",d,i );
+//        printf ( "d=%46f;i=%d\n",d,i );
 //        if ( i==100 )
 //            getchar();
     };
     d = d_p;
-    printf ( "after 1 cycle d=%f;\n",d );
+//    printf ( "after 1 cycle d=%f;\n",d );
 
     step = d;
     while ( step>1 ){
         step = step/10;
         i = 0;
-        while ( d<INFINITY ){
+        while ( (d<INFINITY) && (d+step!=d) ){
             d_p = d;
             d = d+step;
             i++;
-            printf ( "inside INF cycle \nd_p=   %f;\nd=     %f;\nstep=         %f;\nd+step=%f;\ni=%d;\n",d_p,d,step,d+step,i );
+/*            printf ( "inside INF cycle \nd_p=   %f;\nd=     %f;\nstep=         %f;\nd+step=%f;\ni=%d;\n",d_p,d,step,d+step,i );
             printf ( "--------------------------------------------------------\n" );
             if (i==30)
                 getchar();
@@ -454,11 +458,12 @@ float float_max_size(){
                 getchar();
             if (i==230)
                 getchar();
-
+*/
         };
         d = d_p;
-        printf ( "in step cycle \nd=   %46f;\nstep=%46f;\n",d,step );
+/*        printf ( "in step cycle \nd=   %46f;\nstep=%46f;\n",d,step );
         printf ( "===========================================\n" );
+*/
     };
 
     return d;
@@ -466,6 +471,33 @@ float float_max_size(){
 }
 
 float float_min_size(){
+
+    float d,d_p,step;
+    short int i;
+
+    d = d_p = step = 0;
+    i = 0;
+
+    d = -1;
+    while ( d!=-INFINITY ){
+        d_p = d;
+        d = d*10;
+    };
+    d = d_p;
+
+    step = d;
+    while ( step<-1 ){
+        step = step/10;
+        i = 0;
+        while ( (d>-INFINITY) && (d+step!=d) ){
+            d_p = d;
+            d = d+step;
+            i++;
+        };
+        d = d_p;
+    };
+
+    return d;
 
 
 }
