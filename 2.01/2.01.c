@@ -26,6 +26,9 @@ int calculate_ullong();
 float float_min_size();
 float float_max_size();
 
+double double_max_size();
+double double_min_size();
+
 int main()
 {
     int char_d,schar_min_d,schar_max_d,uchar_max_d,int_min_d,int_max_d,short_min_d,shirt_max_d,uint_max_d,i;
@@ -71,7 +74,10 @@ int main()
     printf("LLONG_MAX=%lld\n",LLONG_MAX);
     printf("LLONG_MIN=%lld\n",LLONG_MIN);
     printf("ULLONG_MAX=%lld\n",ULLONG_MAX);
-    printf ( "FLT_MAX=%f;\n",FLT_MAX );
+    printf ( "FLT_MAX=%g;\n",FLT_MAX );
+    printf ( "FLT_MIN=%g;\n",FLT_MIN );
+    printf ( "DBL_MAX=%g;\n",DBL_MAX );
+    printf ( "DBL_MIN=%g;\n",DBL_MIN );
 
     printf("\nAnd now it will be calculated.\n");
 
@@ -131,10 +137,19 @@ int main()
 //=============================================float
 
     float_max = float_max_size();
-    printf ( "Maximal value of float equal %f;\n",float_max );
+    printf ( "Maximal value of float equal %g;\n",float_max );
 
     float_min = float_min_size();
-    printf ( "Minimal value of float equal %f;\n",float_min );
+    printf ( "Minimal value of float equal %g;\n",float_min );
+
+
+//=============================================double
+
+    double_max = double_max_size();
+    printf ( "Maximal value of double equal %g;\n",double_max );
+
+    double_min = double_min_size();
+    printf ( "Minimal value of double equal %g;\n",double_min );
 
 
 }
@@ -419,6 +434,100 @@ unsigned long ulong_max(){
     return d;
 
 }
+/*
+float float_max_size(){
+
+    float d,d_p,step;
+    short int i;
+
+    d = d_p = step = 0;
+    i = 0;
+
+    d = 1;
+    while ( d!=INFINITY ){
+        d_p = d;
+        d = d*10;
+        i++;
+        printf ( "d=%46f;i=%d\n",d,i );
+//        if ( i==100 )
+//            getchar();
+    };
+    d = d_p;
+    printf ( "after 1 cycle d=%f;\n",d );
+
+    step = d;
+    while ( step>1 ){
+        step = step/10;
+        i = 0;
+        while ( d<INFINITY ){
+            d_p = d;
+            d = d+step;
+            i++;
+            printf ( "inside INF cycle \nd_p=   %f;\nd=     %f;\nstep=         %f;\nd+step=%f;\ni=%d;\n",d_p,d,step,d+step,i );
+            printf ( "--------------------------------------------------------\n" );
+            if (i==30)
+                getchar();
+            if (i==60)
+                getchar();
+            if (i==130)
+                getchar();
+            if (i==230)
+                getchar();
+
+        };
+        d = d_p;
+        printf ( "in step cycle \nd=   %46f;\nstep=%46f;\n",d,step );
+        printf ( "===========================================\n" );
+    };
+
+    return d;
+
+}
+*/
+float float_min_size(){
+
+
+    float d,d_p,step;
+    short int i;
+
+    d = d_p = step = 0;
+    i = 0;
+
+    d = -1;
+    while ( d!=-INFINITY ){
+        d_p = d;
+        d = d*10;
+        i++;
+//        printf ( "d=%46f;i=%d\n",d,i );
+//        if ( i==100 )
+//            getchar();
+    };
+    d = d_p;
+//    printf ( "after 1 cycle d=%f;\n",d );
+
+    step = d;
+    while ( step<-1 ){
+        step = step/10;
+        i = 0;
+        while ( (d<INFINITY) && (d+step!=d) ){
+            d_p = d;
+            d = d+step;
+            i++;
+//            printf ( "inside INF cycle \nd_p=   %f;\nd=     %f;\nstep=         %f;\nd+step=%f;\ni=%d;\n",d_p,d,step,d+step,i );
+//            printf ( "--------------------------------------------------------\n" );
+//            if (i==30)
+//                getchar();
+
+        };
+        d = d_p;
+//        printf ( "in step cycle \nd=   %46f;\nstep=%46f;\n",d,step );
+//        printf ( "===========================================\n" );
+    };
+
+    return d;
+
+}
+
 
 float float_max_size(){
 
@@ -448,56 +557,100 @@ float float_max_size(){
             d_p = d;
             d = d+step;
             i++;
-/*            printf ( "inside INF cycle \nd_p=   %f;\nd=     %f;\nstep=         %f;\nd+step=%f;\ni=%d;\n",d_p,d,step,d+step,i );
-            printf ( "--------------------------------------------------------\n" );
+//            printf ( "inside INF cycle \nd_p=   %f;\nd=     %f;\nstep=         %f;\nd+step=%f;\ni=%d;\n",d_p,d,step,d+step,i );
+//            printf ( "--------------------------------------------------------\n" );
             if (i==30)
                 getchar();
-            if (i==60)
-                getchar();
-            if (i==130)
-                getchar();
-            if (i==230)
-                getchar();
-*/
+
         };
         d = d_p;
-/*        printf ( "in step cycle \nd=   %46f;\nstep=%46f;\n",d,step );
-        printf ( "===========================================\n" );
-*/
+//        printf ( "in step cycle \nd=   %46f;\nstep=%46f;\n",d,step );
+//        printf ( "===========================================\n" );
     };
 
     return d;
 
 }
 
-float float_min_size(){
+double double_max_size(){
 
-    float d,d_p,step;
-    short int i;
-
-    d = d_p = step = 0;
-    i = 0;
-
-    d = -1;
-    while ( d!=-INFINITY ){
+    double d,d_p,step;
+    int i;
+    
+    d = 1;
+    while ( d!=INFINITY ){
         d_p = d;
         d = d*10;
+        i++;
+//        printf ( "d=%46f;i=%d\n",d,i );
+//        if ( i==100 )
+//            getchar();
     };
     d = d_p;
 
     step = d;
-    while ( step<-1 ){
+    while ( step>1 ){
         step = step/10;
         i = 0;
-        while ( (d>-INFINITY) && (d+step!=d) ){
+        while ( (d<INFINITY) && (d+step!=d) ){
             d_p = d;
             d = d+step;
             i++;
+//            printf ( "inside INF cycle \nd_p=   %f;\nd=     %f;\nstep=         %f;\nd+step=%f;\ni=%d;\n",d_p,d,step,d+step,i );
+//            printf ( "--------------------------------------------------------\n" );
+            if (i==30)
+                getchar();
+
         };
         d = d_p;
+//        printf ( "in step cycle \nd=   %46f;\nstep=%46f;\n",d,step );
+//        printf ( "===========================================\n" );
     };
 
     return d;
-
-
+    
 }
+
+
+double double_min_size(){
+
+    double d,d_p,step;
+    int i;
+    
+    d = -1;
+    while ( d!=(-INFINITY) ){
+        d_p = d;
+        d = d*10;
+        i++;
+//        printf ( "d=%g;d_p=%g,i=%d\n",d,d_p,i );
+//        if ( i==100 )
+//            getchar();
+    };
+    d = d_p;
+
+//    printf ( "step two\n" );
+    step = d;
+    while ( step<-1 ){
+        step = step/10;
+        i = 0;
+        while ( (d>(-INFINITY) ) && (d+step!=d) ){
+            d_p = d;
+            d = d+step;
+            i++;
+//            printf ( "inside INF cycle \nd_p=%g;\nd=%g;\nstep=%g;\nd+step=%g;\ni=%d;\n",d_p,d,step,d+step,i );
+//            printf ( "--------------------------------------------------------\n" );
+//            if (i==30)
+//                getchar();
+
+        };
+        d = d_p;
+//        printf ( "in step cycle \nd=%g;\nstep=%g;\n",d,step );
+//        printf ( "===========================================\n" );
+    };
+
+//    printf ( "end\n" );
+    return d;
+    
+}
+
+

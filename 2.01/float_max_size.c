@@ -13,9 +13,9 @@ int main()
     db_max = double_max();
     printf ( "maximal size of float eq:%46f;\n",float_max );
 
+//    db_max = double_max();
     db_max = double_max();
-    db_max = double_max();
-    printf ( "maximal size of double eq:%46ld;\n",db_max );
+    printf ( "maximal size of double eq:%46g;\n",db_max );
 
 }
 
