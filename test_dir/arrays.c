@@ -39,6 +39,8 @@ void main ()
 //    printf ( "Before concatenation strings seems so:\nFirst string:%s;\nSecond string:%s;\n", first, second );
 //    strcat_my ( first, second );
 //    printf ( "Copying first string to second.\nResult:%s;\n", first );
+
+
     
 /*    i = 5;
     j = 3;
@@ -118,15 +120,20 @@ void squezze_del ( char s1[], char s2[] )
     int j = 0;
     int k = 0;
 
-    for (i = 0; s1[i] != '\0'; ++i) {
-        for ( j = 0; s2[j] != '\0'; ++j) {
-            if ( s2[j] == s1[i]) {
-                k = j;
-                while ( s2[k] != '\0' ) {
-                    s2[k] = s2[k+1];
-                    ++k;
-                };
-            };            
+    for (i = 0; s2[i] != '\0'; ++i) {
+        if ( s2[i] == 'c' ) {
+            j = i;
+            while ( s2[j] != '\0' ) {
+                printf ( "s2[j=%d]=%c;",j,s2[j] );
+                s2[j] = s2[j+1];
+                printf ( "s2[j=%d]=%c;\n",j,s2[j] );
+//                getchar ();
+                ++j;
+            };
         };
     };
-};
+
+
+
+
+}
