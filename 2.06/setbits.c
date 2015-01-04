@@ -12,12 +12,19 @@ void main ()
     int i = 0;
     int j = 0;
 
-    i = 5;
-    j = 8;
+    i = 10;
+    j = 3;
 
-    printf ( "i = %d, j = %d, i & j = %d;\n", i, j, i & j );
-    printf ( "i in binary = %8d;\nj in binary = %8d;\n ", decimal_binary ( i ), decimal_binary ( j ) );
-
+    printf ( "i = %d, j = %d\n", i, j );
+    printf ( "i in binary = %36d;\nj in binary = %36d;\n\n", decimal_binary ( i ), decimal_binary ( j ) );
+    printf ( "i & j = %12d; and in binary = %12d;\n", i & j, decimal_binary ( i & j ) );
+    printf ( "i | j = %12d; and in binary = %12d;\n", i | j, decimal_binary ( i | j ) );
+    printf ( "i ^ j = %12d; and in binary = %12d;\n", i ^ j, decimal_binary ( i ^ j ) );
+    printf ( "i << j = %11d; and in binary = %12d;\n", i ^ j, decimal_binary ( i << j ) );
+    printf ( "i >> j = %11d; and in binary = %12d;\n", i ^ j, decimal_binary ( i >> j ) );
+    printf ( "~i = %15d; and in binary = %12d;\n~j = %15d; and in binary = %12d;\n", ~ i, decimal_binary ( ~ i ), ~ j, decimal_binary ( ~ j ) );
+    printf ( "   077 = %11d; and in binary = %12d;\n", 077, decimal_binary ( 077 ) );
+    printf ( " ~ 077 = %11d; and in binary = %12d;\n", ~ 077, decimal_binary ( ~ 077 ) );
 }
 
 
@@ -60,7 +67,7 @@ int binary_decimal ( int n ) /* Function to convert binary to decimal.*/
     while ( n != 0 ){
         rem = n%10;
         n /= 10;
-        decimal += rem * pow( 2, i);
+//        decimal += rem * pow( 2, i);
         ++i;
     }
 
