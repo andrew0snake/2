@@ -1,9 +1,9 @@
 #include <stdio.h>
 #include <math.h>
 
-void setbits ( int x, int p, int n, int y );
+int setbits ( int x, int p, int n, int y );
 unsigned getbits ( unsigned x, int p, int n );
-int decimal_binary ( int n );
+int dec_bin ( int n );
 
 
 void main ()
@@ -11,39 +11,60 @@ void main ()
 
     int i = 0;
     int j = 0;
+    int setb = 0;
+    unsigned c = 0;
+    unsigned short int s = 0;
 
-    i = 10;
-    j = 3;
+    i = 3;
+    j = 7;
+    c = 210;
+    s = 0244;
 
-    printf ( "i = %d, j = %d\n", i, j );
-    printf ( "i in binary = %36d;\nj in binary = %36d;\n\n", decimal_binary ( i ), decimal_binary ( j ) );
-    printf ( "i & j = %12d; and in binary = %12d;\n", i & j, decimal_binary ( i & j ) );
-    printf ( "i | j = %12d; and in binary = %12d;\n", i | j, decimal_binary ( i | j ) );
-    printf ( "i ^ j = %12d; and in binary = %12d;\n", i ^ j, decimal_binary ( i ^ j ) );
-    printf ( "i << j = %11d; and in binary = %12d;\n", i ^ j, decimal_binary ( i << j ) );
-    printf ( "i >> j = %11d; and in binary = %12d;\n", i ^ j, decimal_binary ( i >> j ) );
-    printf ( "~i = %15d; and in binary = %12d;\n~j = %15d; and in binary = %12d;\n", ~ i, decimal_binary ( ~ i ), ~ j, decimal_binary ( ~ j ) );
-    printf ( "   077 = %11d; and in binary = %12d;\n", 077, decimal_binary ( 077 ) );
-    printf ( " ~ 077 = %11d; and in binary = %12d;\n", ~ 077, decimal_binary ( ~ 077 ) );
+    printf ( "i = %d;\nj = %d;\ns = %d;\nc = %d;\n", i, j, s, c );
+    printf ( "i in binary = %36d;\nj in binary = %36d;\ns in binary = %36d;\nc in binary = %36d;\n", dec_bin ( i ), dec_bin ( j ), dec_bin ( s ), dec_bin ( c ) );
+    printf ( "i & j = %12d; and in binary = %12d;\n", i & j, dec_bin ( i & j ) );
+    printf ( "i | j = %12d; and in binary = %12d;\n", i | j, dec_bin ( i | j ) );
+    printf ( "i ^ j = %12d; and in binary = %12d;\n", i ^ j, dec_bin ( i ^ j ) );
+    printf ( "i << j = %11d; and in binary = %12d;\n", i ^ j, dec_bin ( i << j ) );
+    printf ( "i >> j = %11d; and in binary = %12d;\n", i ^ j, dec_bin ( i >> j ) );
+    printf ( "~i = %15d; and in binary = %12d;\n~j = %15d; and in binary = %12d;\n", ~ i, dec_bin ( ~ i ), ~ j, dec_bin ( ~ j ) );
+//    printf ( "  077 = %11d; and in binary = %12d;\n", 077, dec_bin ( 077 ) );
+    printf ( "  077 = %12d; and in binary = %12d;\n", s, dec_bin ( s ) );
+    printf ( "~ 077 = %12d; and in binary = %12d;\n", ~ 077, dec_bin ( ~ 077 ) );
+    printf ( "i = %16d;i & 0177 =%19d;\n", i, i & 0177 );
+    printf ( "070 in digital= %4d;070 in binary = %13d;\n", 070, dec_bin ( 070 ) );
+    printf ( "0177 in digital= %3d;0177 in binary = %12d;\n", 0177, dec_bin ( 0177 ) );
+    printf ( "0100 in digital= %3d;0100 in binary = %12d;\n", 0100, dec_bin ( 0100 ) );
+    printf ( "0177700 in digital= %3d;0177700 in binary = %12d;\n", 0177700, dec_bin ( 0177700 ) );
+    printf ( "~ 0 = %d; and in binary = %d;  ~ 0 << %d = %d; and in binary = %d;\n", ~ 0, dec_bin ( ~ 0 ), i, ~ 0 << i, dec_bin ( ~ 0 << i ) );
+    printf ( "~ ( ~ 0 << %d ) = %d; and in binary = %d\n", i, ~ ( ~ 0 << i ), dec_bin ( ~ ( ~ 0 << i ) ) );
+    printf ( "1 << %d = %d; s = %d; \t\t\t\t    and in binary = %10d\n", i, 1 << i, s, dec_bin ( s ) );
+    printf ( "( x = %d ) >> ( ( p = %d ) + 1 - ( n = %d)  ) = %d; and in binary = %10d\n ", s, j, i, s >> ( j + 1 - i ), dec_bin ( s >> ( j + 1 - i ) ) );
+    printf ( "getbits ( %d, %d, %d ) = %d; and in binary = %d\n", s, j, i, getbits ( s, j, i ), dec_bin ( getbits ( s, j, i ) ) );
+    
+    setb = setbits ( c, j, i, s );
+    printf ( "setb = %d; and in binary = %d;\n", setb, dec_bin ( setb ) );
+
 }
 
 
-void setbits ( int x, int p, int n, int y )
+int setbits ( int x, int p, int n, int y )
 {
 
-    
-
+//    return ( y &  ~ ( ~ 0 << n) );
+    return ( x | ( ~ ( ~ 0 << n ) << ( p - n ) ) );
+//    return ( x | ~ ( ~ 0 << n ) & ( y & ~ ( ~ 0 << n ) ) );
 
 }
 
 unsigned getbits ( unsigned x, int p, int n )
 {
 
-    return ( x>> ( p+1-n ) & ~ ( ~ 0 << n) );
+    return ( x >> ( p+1-n ) & ~ ( ~ 0 << n) );
 
 }
 
-int decimal_binary ( int n )  /* Function to convert decimal to binary.*/
+int dec_bin ( int n )  /* Function to convert decimal to binary.*/
 {    
     int rem;
     int i = 1;
