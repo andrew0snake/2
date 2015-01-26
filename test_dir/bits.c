@@ -23,6 +23,8 @@ void main ()
     printf ( "i = %d; and in binary = %d;\n", i, dec_bin ( i ) );
     printf ( "x = %d & ~ i = %d = %d;\n", x, i, x & ( ~ i ) );
     printf ( "x = %d | ~ i = %d = %d;\n", dec_bin ( x ) , dec_bin ( i ) , dec_bin ( x | ( ~ i ) ) );
+    j = -0;
+    printf ( "j = %d; and in binary = %d;\n", j, dec_bin ( j ) );
    
 }
 
