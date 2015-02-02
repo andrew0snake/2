@@ -23,6 +23,9 @@ void main ()
     i = ~ 1;
     printf ( "i = %d; and in binary = %d;\n", i, dec_bin ( i ) );
     printf ( "x = %d & ~ i = %d = %d;\n", x, i, x & ( ~ i ) );
+    printf ( "x = %d | ~ i = %d = %d;\n", dec_bin ( x ) , dec_bin ( i ) , dec_bin ( x | ( ~ i ) ) );
+    j = -0;
+    printf ( "j = %d; and in binary = %d;\n", j, dec_bin ( j ) );
     printf ( "x = %d | ~ i = %d = %d;\n\n", dec_bin ( x ) , dec_bin ( i ) , dec_bin ( x | ( ~ i ) ) );
 
     y = 127;
@@ -50,8 +53,19 @@ void main ()
 
 
     printf ( "-52 in binary = %29d;\n", dec_bin ( -52 ) );
-    printf ( "-2002 in bin = %30d;\n", dec_bin (-2002) );
     printf ( "0x76 in binary = %28d;\n", dec_bin ( 0x76 ) );
+    printf ( "127 in binary = %29d;\n\n", dec_bin ( 127 ) );
+
+    printf ( "1 in binary = %31d;\n", dec_bin ( 1 ) );
+    printf ( "-1 in binary = %30d;\n", dec_bin ( -1 ) );
+    printf ( "~1 in binary = %30d; and in dec = %8d;\n", dec_bin ( ~ 1 ), ( ~ 1 ) );
+    printf ( "~ ( -1 ) in binary = %24d; and in dec = %8d;\n\n", dec_bin ( ~ ( - 1 ) ), ( ~ ( -1 ) ) );
+
+
+    printf ( "2 in binary = %31d;\n", dec_bin ( 2 ) );
+    printf ( "-2 in binary = %30d;\n", dec_bin ( -2 ) );
+    printf ( "~2 in binary = %30d;and in dec = %8d;\n", dec_bin ( ~ 2 ), ( ~ 2 ) );
+    printf ( "~ ( -2 ) in binary = %24d;\n", dec_bin ( ~ ( - 2 ) ) );
 
 
 
