@@ -40,11 +40,19 @@ void main ()
    
     printf ( "y ^ i in dec = %4d; and in binary = %8d; and in oct = %8o;\n", ( y ^ i ), dec_bin ( y ^ i ), ( y ^ i ) );
     printf ( "~ y ^ i in dec =%d; and in binary = %8d; and in oct = %8o;\n", ~ ( y ^ i ), ~ ( dec_bin ( y ^ i ) ), ~ ( y ^ i ) );
-    printf ( "-72 in binary = %29d; and in oct = %o;\n", dec_bin ( -72 ), -72 );
-    printf ( "-13 in binary = %29d;\n", dec_bin ( -13 ) );
+    printf ( "-72 in binary = %29d; and in oct = %o;\n\n", dec_bin ( -72 ), -72 );
+
+    printf ( "13 in binary = %29d;\n", dec_bin ( -13 ) );
+    printf ( "~13 in binary = %28d; and in dec = %d;\n\n", ~( dec_bin ( -13 ) ), ~ 13 );
+
+    printf ( "14 in binary = %29d;\n", dec_bin ( -14 ) );
+    printf ( "~14 in binary = %28d; and in dec = %d;\n\n", ~( dec_bin ( -14 ) ), ~ 14 );
+
+
     printf ( "-52 in binary = %29d;\n", dec_bin ( -52 ) );
     printf ( "-2002 in bin = %30d;\n", dec_bin (-2002) );
     printf ( "0x76 in binary = %28d;\n", dec_bin ( 0x76 ) );
+
 
 
 }
