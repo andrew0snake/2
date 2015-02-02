@@ -74,15 +74,12 @@ int main()
     printf("LLONG_MAX=%lld\n",LLONG_MAX);
     printf("LLONG_MIN=%lld\n",LLONG_MIN);
     printf("ULLONG_MAX=%lld\n",ULLONG_MAX);
-<<<<<<< HEAD
     printf ( "FLT_MAX=%f;\n",FLT_MAX );
     printf ( "FLT_MIN=%Lf;\n",FLT_MIN );
-=======
     printf ( "FLT_MAX=%g;\n",FLT_MAX );
     printf ( "FLT_MIN=%g;\n",FLT_MIN );
     printf ( "DBL_MAX=%g;\n",DBL_MAX );
     printf ( "DBL_MIN=%g;\n",DBL_MIN );
->>>>>>> 46d798d9f2b0327a8f7ddd64454da3ab5b484e83
 
     printf("\nAnd now it will be calculated.\n");
 
