@@ -49,7 +49,7 @@ void main ()
 */
 //    printf ( "~ ( ~ 0 << 3 )  << 4 = %d;\n", dec_bin ( ~ ( ~ 0 << 3 ) << 4 ) );
     setb = setbits ( x, p, n, y );
-    printf ( "rezult of setbits = %4d; and in binary = %d;\n", setb, dec_bin ( setb ) );
+    printf ( "rezult = %4d; and in binary = %19d;\n", setb, dec_bin ( setb ) );
 
 }
 
@@ -63,24 +63,27 @@ int setbits ( int x, int p, int n, int y )
     unsigned short int fourth = 0;
 
 //    first = ( 1 << p + 1 ) | ( ~ ( ~ 0 << p + 1 - n ) ) ;
-    //get n ones bits 
+    //get n ones bits on position, that starts in p
     first = (  ( ~ ( ~ 0 << n ) << ( p - n + 1 ) ) );
     printf ( "first = %42d;\n", dec_bin ( first ) );
 
     //get n bits of y, moved to position p
     second = ( ( y & ( ~ ( ~ 0 << n) ) ) << ( p - n + 1 ) );
-    printf ( "second = %41d;\n\n", dec_bin ( second ) );
+    printf ( "second = %41d;\n", dec_bin ( second ) );
     
-    third = first & second ;
-    printf ( "" );
+    //get nulls in n bits of x in position, that starts in p
+    third = x & ( ~ first ) ;
+    printf ( "third = %42d;\n", dec_bin ( third ) );
 
-
+    //get 
+    fourth = third | second;
+    printf ( "fourth = %41d;\n\n", dec_bin ( fourth ) );
 //    return ( y &  ~ ( ~ 0 << n) );
 //    return ( n | ( ~ ( ~ 0 << n ) << ( p - n ) ) );
 //    return ( n | ~ ( ~ 0 << n ) & ( y & ~ ( ~ 0 << n ) ) );
 
 //    return second;
-    return first;
+    return fourth;
 }
 
 unsigned getbits ( unsigned x, int p, int n )
