@@ -21,7 +21,7 @@ void main ()
     unsigned short int y = 0;
     unsigned long int len = 0;
 
-    n = 5;
+    n = 2;
 
     p = 7;
     x = 466;
@@ -39,10 +39,10 @@ void main ()
 //    printf ( "rezult of inv = %d; and in binary = %12d;\n", inv, dec_bin ( inv ) );
 
     rev = rightrot ( x, n );
-    printf ( "rezult of rotation to right = %d; and in bin = %13d;\n\n", rev, dec_bin ( rev ) );
+    printf ( "rezult to right = %lu; and in bin = %22lu;\n\n", rev, dec_bin ( rev ) );
     
     len = 262143;
-    printf ( "len = %lu; and in bin = %39lu;\n", len, dec_bin ( len ) );
+    printf ( "len = %lu; and in bin = %33lu;\n", len, dec_bin ( len ) );
     printf ( "and size of unsigned long int = %d;\n", sizeof ( unsigned long int ) );
 
 }
@@ -219,10 +219,14 @@ unsigned short int rightrot ( unsigned short int x, unsigned short int n )
     printf ( "second = %51d;\n", dec_bin ( second ) );
 
     //move first n bites of x to the end of full number
-    third = first << ( 16 - n - 1 );
-    printf ( "third = %52d; and in dec = %d; and in oct = %o; \n", dec_bin ( third ), third, third );
+    third = first << ( 16 - n  );
+    printf ( "third = %52lu;\n", dec_bin ( third ) );
 
-    return first;
+    //get whole digit
+    fourth = ( second | third );
+    printf ( "fourth = %51lu;\n\n", dec_bin ( fourth ) );
+
+    return fourth;
 
 }
 
