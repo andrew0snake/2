@@ -6,7 +6,7 @@ int setbits2 ( int x, int p, int n, int y );
 unsigned getbits ( unsigned x, int p, int n );
 unsigned short int invert ( unsigned short int x, unsigned short int p, unsigned short int n );
 unsigned short int rightrot ( unsigned short int x, unsigned short int n );
-int dec_bin ( int n );
+unsigned long int dec_bin ( unsigned long int n );
 
 
 void main ()
@@ -19,6 +19,7 @@ void main ()
     unsigned short int rev = 0;
     unsigned short int x = 0;
     unsigned short int y = 0;
+    unsigned long int len = 0;
 
     n = 5;
 
@@ -40,9 +41,9 @@ void main ()
     rev = rightrot ( x, n );
     printf ( "rezult of rotation to right = %d; and in bin = %13d;\n\n", rev, dec_bin ( rev ) );
     
-    n = 512;
-    printf ( "n = %d; and in bin = %39d;\n", n, dec_bin ( n ) );
-    printf ( "and size of int = %d;\n", sizeof (int) );
+    len = 262143;
+    printf ( "len = %lu; and in bin = %39lu;\n", len, dec_bin ( len ) );
+    printf ( "and size of unsigned long int = %d;\n", sizeof ( unsigned long int ) );
 
 }
 
@@ -133,11 +134,11 @@ unsigned getbits ( unsigned x, int p, int n )
 
 
 
-int dec_bin ( int n )  /* Function to convert decimal to binary.*/
+unsigned long int dec_bin ( unsigned long int n )  /* Function to convert decimal to binary.*/
 {    
-    int rem = 0;
-    int i = 1;
-    int  binary = 0;
+    unsigned long int rem = 0;
+    unsigned long int i = 1;
+    unsigned long int binary = 0;
 
     while ( n != 0 ){
         rem = n % 2;
