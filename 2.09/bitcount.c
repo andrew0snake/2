@@ -18,7 +18,7 @@ void main ()
     printf ( "rezult of counting bits = %16d;\n", rez );
 
     rez = bitcount2 ( x );
-    printf ( "re<unt of counting bits = %16d;\n", rez );
+    printf ( "rezult 2 of counting bits = %14d;\n", rez );
 
 
 }
@@ -42,7 +42,8 @@ int bitcount2 ( unsigned int x )
 {
 
     int b = 0;
-  
+    int rez = 0;
+
 /*    while ( x != 0 ) {
         if ( x ^ ( x &= ( x - 1 ) ) )
             ++b;
@@ -58,12 +59,14 @@ int bitcount2 ( unsigned int x )
         printf ( "b = %10d; and in bin = %13lu;\n", b, dec_bin ( b ) );
 
         printf ( "x ^ b = %6d; and in bin = %13lu;\n", ( x ^ b ), dec_bin ( x ^ b ) );
+        if ( ( x ^ b ) == 1 )
+            ++rez;
 
         x >>=1;
         printf ( "x >>= 1 = %32lu;\n\n", dec_bin ( x ) );
     }
 
-    return b;
+    return rez;
 }
 
 
