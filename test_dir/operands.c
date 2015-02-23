@@ -29,7 +29,8 @@ void main ()
 
 
     c %= 2;
-    printf ( "c %= 2 = %d;\n", c );
+    printf ( "c %= 2 = %d;\n",\
+     c );
 
 
 }
